@@ -103,24 +103,24 @@ class RBoard:
         else:
             return -1000000 # Loss
     def print(self):
-        print(' ',end='')
+        print(' ',end=' ')
         for c in range(8):
-            print(c,end='')
+            print(c,end=' ')
         print("")
         for r in range(8):
-            print(r,end='')
+            print(r,end=' ')
             for c in range(8):
                 if self.data[r][c] == 0:
                     if self.validmove((r,c)):
-                        print('⬚',end='')
+                        print('⬚',end=' ')
                     else:
-                        print(' ',end='')
+                        print(' ',end=' ')
                 elif self.data[r][c] == 1:
-                    print('○',end='')
+                    print('○',end=' ')
                 elif self.data[r][c] == 2:
-                    print('●',end='')
+                    print('●',end=' ')
             print(r)
-        print(" ",end='')
+        print(" ",end=' ')
         for c in range(8):
-            print(c,end='')
+            print(c,end=' ')
         print("")
