@@ -18,7 +18,7 @@ loss=0
 tied=0
 winner=0
 # choice = int(input("? "))
-for i in range(500):
+for i in range(2):
     choice=4
     if 0 < choice < 5:
         ps = [None, None, None]
