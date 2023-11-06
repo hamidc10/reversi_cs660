@@ -1,11 +1,10 @@
-
-
 from player import Player 
 import random
 
 class AIPlayer(Player):
     def __init__(self, p):
         self.playerN = p
+        self.tile_cost={(0,0):1000000,(0,7):1000000,(7,0):1000000,(7,7):1000000,(1,1):-500000,(6,1):-500000,(1,6):-500000,(6,6):-500000,(0,1):-300000,(1,0):-300000,(0,6):-300000,(7,1):-300000,(6,0):-300000,(1,7):-300000,(6,7):-300000,(7,6):-300000}
     
     def rand_board_gen(self,board):
         while not board.terminal():
@@ -19,15 +18,15 @@ class AIPlayer(Player):
         # Aim to take <5sec/move on reasonably modern hardware.
         # You should *always* beat the random player, and will score points for beating weak AIs as well.
         # To launch a game using this AI, run $ python3 play.py
-        data={(0,0):10000000,(0,7):10000000,(7,0):10000000,(7,7):10000000}
+        tile_score=self.tile_cost
         best_move=None
         best_result=float("-inf")
         for action in board.actions():
             played_board=board.result(action)
-            generated=[self.rand_board_gen(played_board) for _ in range(50)]
-            check=sum(generated)/(50*1000000)
-            check += data.get(action ,0)
-            print(check)
+            generated=[self.rand_board_gen(played_board) for _ in range(25)]
+            check=sum(generated)/(25*1000000)
+            check += tile_score.get(action ,0)
+            # print(check)
             if check>best_result:
                 best_result=check
                 best_move=action
